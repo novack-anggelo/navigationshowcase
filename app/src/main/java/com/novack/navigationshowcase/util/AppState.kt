@@ -2,7 +2,6 @@ package com.novack.navigationshowcase.util
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.navigation.NavDestination
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
@@ -10,7 +9,9 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navOptions
 import com.novack.navigationshowcase.navigation.TopLevelDestination
-import kotlinx.coroutines.CoroutineScope
+import com.novack.navigationshowcase.navigation.navigateToHome
+import com.novack.navigationshowcase.navigation.navigateToProfile
+import com.novack.navigationshowcase.navigation.navigateToSettings
 
 @Composable
 fun rememberAppState(
@@ -49,9 +50,10 @@ class AppState(
             restoreState = true
         }
 
-        /*when(topLevelDestination) {
-            TopLevelDestination.PROFILE -> navController
-
-        }*/
+        when(topLevelDestination) {
+            TopLevelDestination.HOME -> navController.navigateToHome(topLevelNavOptions)
+            TopLevelDestination.PROFILE -> navController.navigateToProfile(topLevelNavOptions)
+            TopLevelDestination.SETTINGS -> navController.navigateToSettings(topLevelNavOptions)
+        }
     }
 }

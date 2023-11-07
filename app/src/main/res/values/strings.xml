@@ -2,5 +2,5 @@
     <string name="app_name">navigation showcase</string>
     <string name="HOME">home</string>
     <string name="PROFILE">profile</string>
-    <string name="NEWS">news</string>
+    <string name="SETTINGS">settings</string>
 </resources>

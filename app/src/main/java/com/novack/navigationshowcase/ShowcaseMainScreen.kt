@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
+import com.novack.navigationshowcase.navigation.ShowcaseNavHost
 import com.novack.navigationshowcase.navigation.TopLevelDestination
 import com.novack.navigationshowcase.util.AppState
 import com.novack.navigationshowcase.util.rememberAppState
@@ -28,13 +29,17 @@ fun ShowcaseMainScreen(
         bottomBar = {
             ShowcaseBottomBar(
                 destinations = appState.topLevelDestinations,
-                onNavigateToDestination = {},
+                onNavigateToDestination = appState::navigateToTopLevelDestination,
                 currentDestination = appState.currentDestination
             )
         }
     ) { padding ->
-        Column(modifier = Modifier.padding(padding).fillMaxSize()) {
-
+        Column(
+            modifier = Modifier
+                .padding(padding)
+                .fillMaxSize()
+        ) {
+            ShowcaseNavHost(appState = appState)
         }
     }
 }
